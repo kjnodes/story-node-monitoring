@@ -1,26 +1,11 @@
-{{ define "__alert_title" }}{{ .CommonLabels.alertname }}{{ end }}
-
-{{ define "__alert_description" }}
-*Alert:* {{ .CommonLabels.alertname }}
-*Severity:* {{ .CommonLabels.severity }}
-*Description:* {{ .Annotations.description }}
-*Summary:* {{ .Annotations.summary }}
-{{ end }}
-
 {{ define "custom.alert.notification" }}
-{{ if eq .Status "firing" }}
-  {{- $alert := .Alerts }}
-  {{ range $index, $a := $alert }}
-    *Alert:* {{ template "__alert_title" $a }}
-    *Description:* {{ template "__alert_description" $a }}
-    *Starts At:* {{ $a.StartsAt }}
-    *Ends At:* {{ if .EndsAt }}{{ $a.EndsAt }}{{ else }}Still firing{{ end }}
-    *Labels:*
-    {{ range $key, $value := .Labels }}{{ $key }}: {{ $value }}{{ "\n" }}{{ end }}  # Iterate over Labels
-    *Annotations:*
-    {{ range $key, $value := .Annotations }}{{ $key }}: {{ $value }}{{ "\n" }}{{ end }}  # Iterate over Annotations
-    {{- end }}
-{{ else }}
-  No alerts firing.
+{{ range .Alerts }}
+{{ if eq .Status "firing"}}🟧 <b>{{ .Labels.alertname }}</b> 🟧{{ else }}🟩 <b>{{ .Labels.alertname }}</b> 🟩{{ end }}
+<b>Labels:</b>{{ range $key, $value := .Labels }}{{ if ne $key "alertname" }}
+    {{ $key }}: {{ $value }}{{ end }}{{ end }}
+<b>Annotations:</b>{{ range $key, $value := .Annotations }}
+    {{ $key }}: {{ $value }}{{ end }}{{ if eq .Status "firing"}}
+<b>Duration:</b> {{ since .StartsAt }}{{ else }}<b>Duration:</b> {{ duration .StartsAt .EndsAt }}
+<b>Ended:</b> {{ .EndsAt | since }}{{ end }}
 {{ end }}
 {{ end }}

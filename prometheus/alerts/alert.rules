@@ -35,7 +35,7 @@ groups:
         description: 'Block production stalled. The node has not produced any blocks in the last 5 minutes.'
 
     - alert: NoMetricsReceived
-      expr: absent(story_p2p_peers) == 1 or absent(p2p_peers) == 1
+      expr: absent(cometbft_p2p_peers) == 1 or absent(p2p_peers) == 1
       for: 5m
       labels:
         severity: critical
