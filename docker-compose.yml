@@ -34,11 +34,8 @@ services:
     env_file: ./grafana/grafana.conf
     container_name: grafana
     volumes:
-      - type: volume
-        source: grafana_data
-        target: /var/lib/grafana
-      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
-      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
     ports:
       - 9999:3000
     networks:
