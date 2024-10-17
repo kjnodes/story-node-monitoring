@@ -48,7 +48,7 @@ echo "export $(xargs < $HOME/story-node-monitoring/config/.env)" > $HOME/.bash_p
 source $HOME/.bash_profile
 ```
 
-# Adjust IP:PORT to match sotry node metrics endpoints in prometheus config file
+# Adjust YOUR_NODE_IP:PORT to match sotry node metrics endpoints in prometheus config file
 ```bash
 vim $HOME/story-node-monitoring/prometheus/prometheus.yml
 ```
@@ -99,7 +99,6 @@ cd $HOME/story-node-monitoring && docker-compose up -d
 ```
 
 ports used:
-- `8080` (alertmanager-bot)
 - `9090` (prometheus)
 - `9093` (alertmanager)
 - `9999` (grafana)

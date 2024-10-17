@@ -84,6 +84,9 @@ services:
   alertmanager:
     image: prom/alertmanager:latest
     container_name: alertmanager
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_ADMIN}
     networks:
       - story-monitoring
     ports:
@@ -99,23 +102,3 @@ services:
     ]
     hostname: 'alertmanager'
     restart: always
-
-  alertmanager-bot:
-    container_name: alertmanager-bot
-    command:
-      - '--alertmanager.url=http://alertmanager:9093'
-      - '--log.level=info'
-      - '--store=bolt'
-      - '--bolt.path=/data/bot.db'
-      - "--telegram.admin=${TELEGRAM_ADMIN}"
-      - "--telegram.token=${TELEGRAM_TOKEN}"
-    image: metalmatze/alertmanager-bot:0.4.3
-    networks:
-      - story-monitoring
-    ports:
-      - 8080:8080
-    hostname: 'alertmanager-bot'
-    restart: always
-    volumes:
-      - ./data:/data
-      - ./default.tmpl:/templates/default.tmpl

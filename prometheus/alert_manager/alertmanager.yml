@@ -5,19 +5,14 @@ templates:
 - 'templates/*'
 
 route:
-  group_by: ['...']
-  group_wait: 0s
+  receiver: 'telegram'
+  group_wait: 30s
   group_interval: 5m
-  repeat_interval: 1h
-  
-  routes:
-    - receiver: 'node-monitoring'
-      group_by: ['...']
-
-  receiver: node-monitoring
+  repeat_interval: 12h
 
 receivers:
-- name: 'node-monitoring'
-  webhook_configs:
-  - send_resolved: true
-    url: 'http://alertmanager-bot:8080'
+  - name: 'telegram'
+    telegram_configs:
+      - send_resolved: true
+        bot_token: 'YOUR_TELEGRAM_BOT_TOKEN'  # Put your telegram bot token here
+        chat_id: 'YOUR_TELEGRAM_CHAT_ID'      # Put your telegram chat id here
