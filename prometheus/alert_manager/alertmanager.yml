@@ -2,7 +2,7 @@ global:
   resolve_timeout: 1m
 
 templates: 
-- 'templates/*'
+- 'templates/*.tmpl'
 
 route:
   receiver: 'telegram'
@@ -14,5 +14,6 @@ receivers:
   - name: 'telegram'
     telegram_configs:
       - send_resolved: true
+        message: '{{ template "custom.alert.notification" . }}'  # Use your custom template here
         bot_token: 'YOUR_TELEGRAM_BOT_TOKEN'  # Put your telegram bot token here
         chat_id: 'YOUR_TELEGRAM_USER_ID'      # Put your telegram user id here
