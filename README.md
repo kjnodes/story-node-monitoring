@@ -27,28 +27,40 @@ cd $HOME && rm -rf story-node-monitoring
 git clone https://github.com/kjnodes/story-node-monitoring.git
 ```
 
-# Copy _.env.example_ into _.env_
-```bash
-cp $HOME/story-node-monitoring/config/.env.example $HOME/story-node-monitoring/config/.env
-```
-
-# Update values in _.env_ file
-```bash
-vim $HOME/story-node-monitoring/config/.env
-```
+# Set YOUR_TELEGRAM_BOT_TOKEN and YOUR_TELEGRAM_USER_ID in the Alertmanager configuration file.
 
 | KEY | VALUE |
 |---------------|-------------|
-| TELEGRAM_ADMIN | Your user id you can get from [@userinfobot](https://t.me/userinfobot). The bot will only reply to messages sent from the user. All other messages are dropped and logged on the bot's console |
-| TELEGRAM_TOKEN | Your telegram bot access token you can get from [@botfather](https://telegram.me/botfather). To generate new token just follow a few simple steps described [here](https://core.telegram.org/bots#6-botfather) |
+| YOUR_TELEGRAM_USER_ID | Your can get your telegram user id from [@userinfobot](https://t.me/userinfobot). The bot will only reply to messages sent from the user. All other messages are dropped and logged on the bot's console |
+| YOUR_TELEGRAM_BOT_TOKEN | Your telegram bot access token you can get from [@botfather](https://telegram.me/botfather). To generate new token just follow a few simple steps described [here](https://core.telegram.org/bots#6-botfather) |
 
-# Export _.env_ file values into _.bash_profile_
 ```bash
-echo "export $(xargs < $HOME/story-node-monitoring/config/.env)" > $HOME/.bash_profile
-source $HOME/.bash_profile
+vim $HOME/story-node-monitoring/prometheus/alert_manager/alertmanager.yml
 ```
 
-# Adjust YOUR_NODE_IP:PORT to match sotry node metrics endpoints in prometheus config file
+Example
+```yml
+global:
+  resolve_timeout: 1m
+
+templates: 
+- 'templates/*'
+
+route:
+  receiver: 'telegram'
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+
+receivers:
+  - name: 'telegram'
+    telegram_configs:
+      - send_resolved: true
+        bot_token: '74064354354:AfeDFge7zdw-oJBOyf1CuEryo9gwpFfcw'
+        chat_id: '442175262'
+```
+
+# Set YOUR_NODE_IP:PORT in the Prometheus configuration file.
 ```bash
 vim $HOME/story-node-monitoring/prometheus/prometheus.yml
 ```
