@@ -15,8 +15,10 @@
     *Description:* {{ template "__alert_description" $a }}
     *Starts At:* {{ $a.StartsAt }}
     *Ends At:* {{ if .EndsAt }}{{ $a.EndsAt }}{{ else }}Still firing{{ end }}
-    *Labels:* {{ .Labels | toJson }}
-    *Annotations:* {{ .Annotations | toJson }}
+    *Labels:*
+    {{ range $key, $value := .Labels }}{{ $key }}: {{ $value }}{{ "\n" }}{{ end }}  # Iterate over Labels
+    *Annotations:*
+    {{ range $key, $value := .Annotations }}{{ $key }}: {{ $value }}{{ "\n" }}{{ end }}  # Iterate over Annotations
     {{- end }}
 {{ else }}
   No alerts firing.
