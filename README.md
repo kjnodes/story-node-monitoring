@@ -1,10 +1,24 @@
-# Install updates and dependencies
+# Story Node Monitoring stack
+
+This project provides a monitoring solution for Story Node services using Prometheus, Grafana, and Alertmanager. The stack enables real-time data visualization, monitoring, and alerting for your node's health and performance.
+
+## Installation
+
+Follow these steps to install the necessary dependencies and deploy the monitoring stack.
+
+### 1. Install Updates and Dependencies
+
+Update your system and install essential tools:
+
 ```bash
 sudo apt-get update
 sudo apt install jq -y
 ```
 
-# Install docker
+### 2. Install Docker
+
+Install Docker, a containerization platform required for running the monitoring services:
+
 ```bash
 sudo apt-get install ca-certificates curl gnupg lsb-release wget -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -14,33 +28,46 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 ```
 
-# Install docker compose
+### 3. Install Docker Compose
+
+Docker Compose is required to manage multi-container Docker applications:
+
 ```bash
 docker_compose_version=$(wget -qO- https://api.github.com/repos/docker/compose/releases/latest | jq -r ".tag_name")
 sudo wget -O /usr/bin/docker-compose "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-`uname -s`-`uname -m`"
 sudo chmod +x /usr/bin/docker-compose
 ```
 
-# Clone repository
+### 4. Clone the Monitoring Stack Repository
+
+Clone the repository that contains the monitoring stack configuration:
+
 ```bash
 cd $HOME && rm -rf story-node-monitoring
 git clone https://github.com/kjnodes/story-node-monitoring.git
 ```
 
-# Set Telegram user and Bot token
+## Pre-Configuration
 
-Modify `YOUR_TELEGRAM_BOT_TOKEN` and `YOUR_TELEGRAM_USER_ID` in the Alertmanager configuration file.
+Before deploying the monitoring stack, configure Alerting and Prometheus settings.
+
+### 1. Set Up Telegram Alerting
+
+Configure Alertmanager to send notifications via Telegram. Update the `YOUR_TELEGRAM_BOT_TOKEN` and `YOUR_TELEGRAM_USER_ID` in the Alertmanager configuration file.
 
 | KEY | VALUE |
 |---------------|-------------|
-| YOUR_TELEGRAM_USER_ID | Your can get your telegram user id from [@userinfobot](https://t.me/userinfobot). The bot will only reply to messages sent from the user. All other messages are dropped and logged on the bot's console |
-| YOUR_TELEGRAM_BOT_TOKEN | Your telegram bot access token you can get from [@botfather](https://telegram.me/botfather). To generate new token just follow a few simple steps described [here](https://core.telegram.org/bots#6-botfather) |
+| YOUR_TELEGRAM_USER_ID | Your Telegram user ID can be obtained from [@userinfobot](https://t.me/userinfobot). The bot will only respond to messages sent from the specified user. |
+| YOUR_TELEGRAM_BOT_TOKEN | Get your bot token from [@botfather](https://telegram.me/botfather). Follow the steps outlined [here](https://core.telegram.org/bots#6-botfather) to create a new token. |
+
+Edit the configuration file:
 
 ```bash
 vim $HOME/story-node-monitoring/prometheus/alert_manager/alertmanager.yml
 ```
 
-Example
+Example configuration:
+
 ```yml
 global:
   resolve_timeout: 1m
@@ -59,18 +86,19 @@ receivers:
     telegram_configs:
       - send_resolved: true
         bot_token: '74064354354:AfeDFge7zdw-oJBOyf1CuEryo9gwpFfcw'
-        chat_id: '442175262'
+        chat_id: 442175262
 ```
 
-# Set node IP and port
+### 2. Configure Prometheus
 
-Modify `YOUR_NODE_IP:PORT` in the Prometheus configuration file.
+Set up Prometheus by specifying the `IP` address and `ports` for your node services. Modify the `YOUR_NODE_IP:PORT` in the configuration file:
 
 ```bash
 vim $HOME/story-node-monitoring/prometheus/prometheus.yml
 ```
 
-Example
+Example configuration:
+
 ```yml
 global:
   scrape_interval: 15s
@@ -109,38 +137,59 @@ scrape_configs:
           instance: story
 ```
 
-# Run docker-compose
-Deploy the monitoring stack
+## Monitoring stack deployment
+
 ```bash
 cd $HOME/story-node-monitoring && docker-compose up -d
 ```
 
-ports used:
-- `9090` (prometheus)
-- `9093` (alertmanager)
-- `9999` (grafana)
+## Data Visualization Using Grafana
 
-## Configuration
+Follow these steps to access and use the Story Node Dashboard in Grafana:
 
-### Configure Grafana
-1. Open Grafana in your web browser. It should be available on port `9999`
+1. Open Grafana in your web browser (default port: 9999).
 
 ![image](images/grafana-login.png)
 
-2. Login using defaults `admin/admin` and change password
+2. Log in using the default credentials `admin/admin`, then set a new password.
 
-3. Import custom dashboard
+3. Navigate to the `Dashboards` page to access the `Story Node Dashboard`.
 
-3.1. Press "+" icon on the left panel and then choose **"Import"**
+## Dashboard contents
 
-![image](images/import-dashboard-1.png)
+The Grafana dashboard is organized into three main sections:
 
-3.2. Input grafana.com dashboard id `22101` and press **"Load"**
+- **kjnodes Story Services** - contains links to kjnodes provided services for Story Protocol.
 
-![image](images/import-dashboard-2.png)
+![image](images/dashboard-kjnodes-services.png)
 
-3.3. Select Prometheus data source and press **"Import"**
+- **Cometbft Node Metrics** - displays key metrics for monitoring the health, performance, and activity of the CometBFT node.
 
-![image](images/import-dashboard-3.png)
+![image](images/dashboard-cometbft-node-metrics.png)
 
-4. Congratulations you have successfully imported Story Node Dashboard!
+- **Geth Node Metrics** - shows metrics related to the health, performance, and activity of the Geth node.
+
+![image](images/dashboard-geth-node-metrics.png)
+
+## Alerting and Notifications
+
+Alertmanager triggers alerts and sends notifications when configured conditions are met, such as degraded block synchronization or low peers.
+
+![image](images/telegram-alerts.png)
+
+## Clean Up All Container Data
+
+To stop and remove the monitoring stack and associated data, execute:
+
+```
+cd $HOME/story-node-monitoring
+docker-compose down
+docker volume prune -f
+```
+
+## Accessing the Monitoring Stack UI
+
+You can access the monitoring tools using these ports:
+- Prometheus: 9090
+- Alertmanager: 9093
+- Grafana: 9999

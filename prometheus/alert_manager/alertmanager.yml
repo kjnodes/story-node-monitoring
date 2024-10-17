@@ -6,14 +6,15 @@ templates:
 
 route:
   receiver: 'telegram'
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 12h
+  group_wait: 30s           # Wait 30 seconds before sending the first notification
+  group_interval: 5m        # Send a notification at least every 5 minutes for ongoing alerts
+  repeat_interval: 4h       # Repeat notifications for ongoing alerts every 4 hour
+  group_by: ['alertname']   # Group alerts with the same 'alertname' together
 
 receivers:
   - name: 'telegram'
     telegram_configs:
       - send_resolved: true
-        message: '{{ template "custom.alert.notification" . }}'  # Use your custom template here
-        bot_token: 'YOUR_TELEGRAM_BOT_TOKEN'  # Put your telegram bot token here
-        chat_id: 'YOUR_TELEGRAM_USER_ID'      # Put your telegram user id here
+        bot_token: 'YOUR_TELEGRAM_BOT_TOKEN'           # Put your telegram bot token here
+        chat_id: 'YOUR_TELEGRAM_USER_ID'               # Put your telegram user id here
+        message: '{{ template "telegram.message" . }}' # Use your custom template here
