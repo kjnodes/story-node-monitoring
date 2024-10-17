@@ -27,7 +27,9 @@ cd $HOME && rm -rf story-node-monitoring
 git clone https://github.com/kjnodes/story-node-monitoring.git
 ```
 
-# Set YOUR_TELEGRAM_BOT_TOKEN and YOUR_TELEGRAM_USER_ID in the Alertmanager configuration file.
+# Set Telegram user and Bot token
+
+Modify `YOUR_TELEGRAM_BOT_TOKEN` and `YOUR_TELEGRAM_USER_ID` in the Alertmanager configuration file.
 
 | KEY | VALUE |
 |---------------|-------------|
@@ -60,7 +62,10 @@ receivers:
         chat_id: '442175262'
 ```
 
-# Set YOUR_NODE_IP:PORT in the Prometheus configuration file.
+# Set node IP and port
+
+Modify `YOUR_NODE_IP:PORT` in the Prometheus configuration file.
+
 ```bash
 vim $HOME/story-node-monitoring/prometheus/prometheus.yml
 ```
