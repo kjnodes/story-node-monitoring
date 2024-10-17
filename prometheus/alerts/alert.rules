@@ -7,7 +7,6 @@ groups:
       for: 5m
       labels:
         severity: major
-        service: story-monitoring
       annotations:
         description: 'Alert: The number of connected P2P peers is below the defined threshold. Current value: {{ $value }})'
 
@@ -16,7 +15,6 @@ groups:
       for: 5m
       labels:
         severity: major
-        service: story-monitoring
       annotations:
         description: 'Alert: Degraded syncing performance.'
 
@@ -25,6 +23,5 @@ groups:
       for: 5m
       labels:
         severity: major
-        service: story-monitoring
       annotations:
         description: 'Alert: Block production stalled. The node has not produced any blocks in the last 5 minutes.'
