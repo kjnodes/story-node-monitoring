@@ -2,6 +2,14 @@ groups:
   - name: Story Monitoring
     rules:
 
+    - alert: NotInSync
+      expr: cometbft_blocksync_syncing != 0
+      for: 5m
+      labels:
+        severity: minor
+      annotations:
+        description: 'Node is not in sync.'
+
     - alert: TooFewPeers
       expr: story_p2p_peers < 2 or p2p_peers < 2
       for: 5m
