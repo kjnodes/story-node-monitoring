@@ -1,0 +1,30 @@
+groups:
+  - name: Story Monitoring
+    rules:
+
+    - alert: TooFewPeers
+      expr: story_p2p_peers{instance="story"} < 2 or p2p_peers{instance="story"} < 2
+      for: 5m
+      labels:
+        severity: major
+        service: story-monitoring
+      annotations:
+        description: 'Alert: The number of connected P2P peers is below the defined threshold. Current value: {{ $value }})'
+
+    - alert: DegradedSyncing
+      expr: increase(cometbft_consensus_latest_block_height{instance="story"}[5m]) < 10 or increase(chain_head_block{instance="story"}[5m]) < 10
+      for: 5m
+      labels:
+        severity: major
+        service: story-monitoring
+      annotations:
+        description: 'Alert: Degraded syncing performance.'
+
+    - alert: StalledSyncing
+      expr: increase(cometbft_consensus_latest_block_height{instance="story"}[5m]) == 0 or increase(chain_head_block{instance="story"}[5m]) == 0
+      for: 5m
+      labels:
+        severity: major
+        service: story-monitoring
+      annotations:
+        description: 'Alert: Block production stalled. The node has not produced any blocks in the last 5 minutes.'

@@ -1,0 +1,35 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+alerting:
+  alertmanagers:
+    - follow_redirects: true
+      scheme: http
+      timeout: 10s
+      api_version: v2
+      static_configs:
+        - targets:
+            - alertmanager:9093
+rule_files:
+  - /etc/prometheus/alerts/alert.rules
+scrape_configs:
+  - job_name: prometheus
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: cometbft
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - IP:PORT  # for example 192.168.0.1:26660
+        labels:
+          instance: story
+  - job_name: geth
+    metrics_path: /debug/metrics/prometheus
+    static_configs:
+      - targets:
+          - IP:PORT  # for example 192.168.0.1:6060
+        labels:
+          instance: story
