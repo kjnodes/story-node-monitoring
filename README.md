@@ -203,13 +203,13 @@ Displays blockchain metrics like block and transaction processing.
 
 Displays database metrics like block time, blck size and information active validator set.
 
-![image](images/dashboard-geth-blockchain-metrics.png)
+![image](images/dashboard-geth-database-metrics.png)
 
 ## Alerting and Notifications
 
 Alertmanager triggers alerts and sends notifications when configured conditions are met, such as degraded block synchronization or low peers.
 
-![image](images/telegram-alerts.png)
+<img src="images/telegram-alerts.png" alt="image" width="400" />
 
 ## Clean Up All Container Data
 
