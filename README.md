@@ -6,45 +6,34 @@ This project provides a monitoring solution for Story Node services using Promet
 
 Follow these steps to install the necessary dependencies and deploy the monitoring stack.
 
-### 1. Install Updates and Dependencies
-
-Update your system and install essential tools:
-
-```bash
-sudo apt-get update
-sudo apt install jq -y
-```
-
-### 2. Install Docker
+### 1. Install Docker
 
 Install Docker, a containerization platform required for running the monitoring services:
 
 ```bash
-sudo apt-get install ca-certificates curl gnupg lsb-release wget -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-sudo chmod a+r /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt-get -y install ca-certificates curl
+
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl enable docker.service containerd.service
+sudo systemctl start docker.service containerd.service
 ```
 
-### 3. Install Docker Compose
-
-Docker Compose is required to manage multi-container Docker applications:
-
-```bash
-docker_compose_version=$(wget -qO- https://api.github.com/repos/docker/compose/releases/latest | jq -r ".tag_name")
-sudo wget -O /usr/bin/docker-compose "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-`uname -s`-`uname -m`"
-sudo chmod +x /usr/bin/docker-compose
-```
-
-### 4. Clone the Monitoring Stack Repository
+### 2. Clone the Monitoring Stack Repository
 
 Clone the repository that contains the monitoring stack configuration:
 
 ```bash
-cd $HOME && rm -rf story-node-monitoring
-git clone https://github.com/kjnodes/story-node-monitoring.git
+rm -rf $HOME/story-node-monitoring
+git clone https://github.com/kjnodes/story-node-monitoring.git $HOME/story-node-monitoring
 ```
 
 ## Pre-Configuration
@@ -140,7 +129,8 @@ scrape_configs:
 ## Monitoring stack deployment
 
 ```bash
-cd $HOME/story-node-monitoring && docker-compose up -d
+cd $HOME/story-node-monitoring
+docker compose up -d
 ```
 
 ## Data Visualization Using Grafana
@@ -183,8 +173,7 @@ To stop and remove the monitoring stack and associated data, execute:
 
 ```
 cd $HOME/story-node-monitoring
-docker-compose down
-docker volume prune -f
+docker compose down --volumes
 ```
 
 ## Accessing the Monitoring Stack UI
