@@ -46,7 +46,7 @@ Configure Alertmanager to send notifications via Telegram. Update the `YOUR_TELE
 
 | KEY | VALUE |
 |---------------|-------------|
-| YOUR_TELEGRAM_USER_ID | Your Telegram user ID can be obtained from [@userinfobot](https://t.me/userinfobot). The bot will only respond to messages sent from the specified user. |
+| YOUR_TELEGRAM_USER_ID | Your Telegram user ID can be obtained from [@userinfobot](https://t.me/userinfobot). |
 | YOUR_TELEGRAM_BOT_TOKEN | Get your bot token from [@botfather](https://telegram.me/botfather). Follow the steps outlined [here](https://core.telegram.org/bots#6-botfather) to create a new token. |
 
 Edit the configuration file:
@@ -62,13 +62,14 @@ global:
   resolve_timeout: 1m
 
 templates: 
-- 'templates/*'
+- 'templates/*.tmpl'
 
 route:
   receiver: 'telegram'
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 12h
+  group_by: []            # Empty list to avoid grouping alerts
+  group_wait: 0s          # Send notifications immediately
+  group_interval: 0s      # Send each alert notification individually
+  repeat_interval: 4h     # Repeat notifications for ongoing alerts every 4 hours
 
 receivers:
   - name: 'telegram'
@@ -76,6 +77,7 @@ receivers:
       - send_resolved: true
         bot_token: '74064354354:AfeDFge7zdw-oJBOyf1CuEryo9gwpFfcw'
         chat_id: 442175262
+        message: '{{ template "telegram.message" . }}'
 ```
 
 ### 2. Configure Prometheus
@@ -139,8 +141,6 @@ Follow these steps to access and use the Story Node Dashboard in Grafana:
 
 1. Open Grafana in your web browser (default port: 9999).
 
-![image](images/grafana-login.png)
-
 2. Log in using the default credentials `admin/admin`, then set a new password.
 
 3. Navigate to the `Dashboards` page to access the `Story Node Dashboard`.
@@ -149,17 +149,61 @@ Follow these steps to access and use the Story Node Dashboard in Grafana:
 
 The Grafana dashboard is organized into three main sections:
 
-- **kjnodes Story Services** - contains links to kjnodes provided services for Story Protocol.
+### 1. kjnodes Story Services**
+
+Contains links to kjnodes provided services for Story Protocol.
 
 ![image](images/dashboard-kjnodes-services.png)
 
-- **Cometbft Node Metrics** - displays key metrics for monitoring the health, performance, and activity of the CometBFT node.
+### 2. Cometbft Node Metrics
 
-![image](images/dashboard-cometbft-node-metrics.png)
+Displays key metrics for monitoring the health, performance, and activity of the CometBFT node.
 
-- **Geth Node Metrics** - shows metrics related to the health, performance, and activity of the Geth node.
+#### 2.1. System
 
-![image](images/dashboard-geth-node-metrics.png)
+Shows system related metrics like node status, service uptime, memory and cpu usage.
+
+![image](images/dashboard-cometbft-system-metrics.png)
+
+#### 2.2. Network
+
+Network metrics like node peer connections and traffic.
+
+![image](images/dashboard-cometbft-network-metrics.png)
+
+#### 2.3. Blockchain
+
+Displays blockchain metrics like block time, blck size and information active validator set.
+
+![image](images/dashboard-cometbft-blockchain-metrics.png)
+
+### 3. Geth Node Metrics
+
+Shows metrics related to the health, resource consumption, and activity of the Geth node.
+
+#### 3.1. System
+
+Shows system related metrics like geth binary version and system resource consumption.
+
+![image](images/dashboard-geth-system-metrics.png)
+
+#### 3.2. Network
+
+Network metrics like node peer connections and traffic.
+
+![image](images/dashboard-geth-network-metrics.png)
+
+#### 3.3. Blockchain
+
+Displays blockchain metrics like block and transaction processing.
+
+![image](images/dashboard-geth-blockchain-metrics.png)
+
+#### 3.4. Database
+
+Displays database metrics like block time, blck size and information active validator set.
+
+![image](images/dashboard-geth-blockchain-metrics.png)
 
 ## Alerting and Notifications
 
