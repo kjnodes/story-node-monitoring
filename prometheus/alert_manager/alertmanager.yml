@@ -6,10 +6,10 @@ templates:
 
 route:
   receiver: 'telegram'
-  group_wait: 30s           # Wait 30 seconds before sending the first notification
-  group_interval: 5m        # Send a notification at least every 5 minutes for ongoing alerts
-  repeat_interval: 4h       # Repeat notifications for ongoing alerts every 4 hour
-  group_by: ['instance']    # Group alerts with the same 'instance' together
+  group_by: []            # Empty list to avoid grouping alerts
+  group_wait: 0s          # Send notifications immediately
+  group_interval: 1s      # Set a minimal interval for ongoing alerts
+  repeat_interval: 4h     # Repeat notifications for ongoing alerts every 4 hours
 
 receivers:
   - name: 'telegram'

@@ -13,7 +13,8 @@
 <i>{{ .Annotations.description }}</i>
 
 <b>🏷  Labels:</b>
-| {{ range $key, $value := .Labels }}{{ if ne $key "alertname" }}{{ $key }}: <code>{{ $value }}</code> | {{ end }}{{ end }}{{ end }}
+| {{ range $key, $value := .Labels }}{{ if ne $key "alertname" }}{{ $key }}: <code>{{ $value }}</code> | {{ end }}{{ end }}
+{{ end }}
 
 {{ define "telegram_alert_resolved" }}
 <b>{{ .Labels.alertname }}</b>
