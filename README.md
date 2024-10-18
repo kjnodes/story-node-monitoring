@@ -209,7 +209,9 @@ Displays database metrics like block time, blck size and information active vali
 
 Alertmanager triggers alerts and sends notifications when configured conditions are met, such as degraded block synchronization or low peers.
 
-<img src="images/telegram-alerts.png" alt="image" width="400" />
+<div style="text-align: center;">
+    <img src="images/telegram-alerts.png" alt="image" width="500" />
+</div>
 
 ## Clean Up All Container Data
 
