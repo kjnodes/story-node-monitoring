@@ -9,7 +9,7 @@ route:
   group_wait: 30s           # Wait 30 seconds before sending the first notification
   group_interval: 5m        # Send a notification at least every 5 minutes for ongoing alerts
   repeat_interval: 4h       # Repeat notifications for ongoing alerts every 4 hour
-  group_by: ['alertname']   # Group alerts with the same 'alertname' together
+  group_by: ['instance']    # Group alerts with the same 'instance' together
 
 receivers:
   - name: 'telegram'

@@ -1,41 +1,64 @@
 groups:
-  - name: Story Monitoring
+  - name: Node Monitoring
     rules:
 
     - alert: NotInSync
       expr: cometbft_blocksync_syncing != 0
-      for: 5m
+      for: 1m
       labels:
         severity: minor
       annotations:
         description: 'Node is not in sync.'
 
-    - alert: TooFewPeers
-      expr: story_p2p_peers < 2 or p2p_peers < 2
+    - alert: NodeRestarted
+      expr: time() - process_start_time_seconds < 60
+      labels:
+        severity: minor
+      annotations:
+        description: 'Node has been recently restarted.'
+
+    - alert: CometTooFewPeers
+      expr: cometbft_p2p_peers < 2
       for: 5m
       labels:
         severity: major
       annotations:
-        description: 'The number of connected P2P peers is below the defined threshold.'
+        description: 'The number of connected P2P peers has been below the defined threshold in the last 5 minutes.'
 
-    - alert: DegradedSyncing
-      expr: increase(cometbft_consensus_latest_block_height[5m]) < 10 or increase(chain_head_block[5m]) < 10
+    - alert: GethTooFewPeers
+      expr: p2p_peers < 2
       for: 5m
       labels:
         severity: major
       annotations:
-        description: 'Degraded syncing performance.'
+        description: 'The number of connected P2P peers has been below the defined threshold in the last 5 minutes.'
 
-    - alert: StalledBlocks
-      expr: increase(cometbft_consensus_latest_block_height[5m]) == 0 or increase(chain_head_block[5m]) == 0
+    - alert: CometStalledBlocks
+      expr: increase(cometbft_consensus_latest_block_height[5m]) == 0
       for: 5m
       labels:
         severity: critical
       annotations:
         description: 'Block production stalled. The node has not produced any blocks in the last 5 minutes.'
 
-    - alert: NoMetricsReceived
-      expr: absent(cometbft_p2p_peers) == 1 or absent(p2p_peers) == 1
+    - alert: GethStalledBlocks
+      expr: increase(chain_head_block[5m]) == 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: 'Block production stalled. The node has not produced any blocks in the last 5 minutes.'
+
+    - alert: CometNoMetricsReceived
+      expr: absent(cometbft_p2p_peers) == 1
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: 'No metrics have been received in the last 5 minutes.'
+
+    - alert: GethNoMetricsReceived
+      expr: absent(p2p_peers) == 1
       for: 5m
       labels:
         severity: critical
