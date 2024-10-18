@@ -4,7 +4,7 @@ This project provides a monitoring solution for Story Node services using Promet
 
 ## Enable prometheus metrics and open ports
 
-Before continuing make sure you have enabled prometheus metrics on both Cometbft and Geth node.
+> **Note:** Before continuing make sure you have enabled prometheus metrics on both Cometbft and Geth node. If you're using a firewall, ensure that the corresponding ports are open to allow Prometheus to scrape the metrics.
 
 ### Cometbft node configuration
 
@@ -55,8 +55,6 @@ Make sure to reload systemd configuration after making changes.
 ```bash
 systemctl daemon-reload
 ```
-
-> **Note:** If you're using a firewall, ensure that the corresponding ports are open to allow Prometheus to scrape the metrics.
 
 ## Installation
 
