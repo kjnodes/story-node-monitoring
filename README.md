@@ -68,7 +68,7 @@ route:
   receiver: 'telegram'
   group_by: []            # Empty list to avoid grouping alerts
   group_wait: 0s          # Send notifications immediately
-  group_interval: 0s      # Send each alert notification individually
+  group_interval: 1s      # Set a minimal interval for ongoing alerts
   repeat_interval: 4h     # Repeat notifications for ongoing alerts every 4 hours
 
 receivers:
