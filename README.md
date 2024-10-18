@@ -2,6 +2,62 @@
 
 This project provides a monitoring solution for Story Node services using Prometheus, Grafana, and Alertmanager. The stack enables real-time data visualization, monitoring, and alerting for your node's health and performance.
 
+## Enable prometheus metrics and open ports
+
+Before continuing make sure you have enabled prometheus metrics on both Cometbft and Geth node.
+
+### Cometbft node configuration
+
+Enable prometheus metrics in cometbft configuration file `config.toml`.
+
+```bash
+vim $HOME/.story/story/config/config.toml
+```
+
+Example configuration:
+```toml
+[instrumentation]
+
+# When true, Prometheus metrics are served under /metrics on
+# PrometheusListenAddr.
+# Check out the documentation for the list of available metrics.
+prometheus = true
+
+# Address to listen for Prometheus collector(s) connections
+prometheus_listen_addr = ":26660"
+```
+
+### Geth node configuration
+
+Enable prometheus metrics by adding metrics flags to the geth execution.
+
+Example service configuration:
+
+```bash
+[Unit]
+Description=Story Execution Client service
+After=network-online.target
+
+[Service]
+User=root
+WorkingDirectory=~
+ExecStart=/usr/local/bin/geth --iliad --syncmode full --http --ws --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Make sure to reload systemd configuration after making changes.
+
+```bash
+systemctl daemon-reload
+```
+
+> **Note:** If you're using a firewall, ensure that the corresponding ports are open to allow Prometheus to scrape the metrics.
+
 ## Installation
 
 Follow these steps to install the necessary dependencies and deploy the monitoring stack.
@@ -207,13 +263,24 @@ Displays database metrics like block time, blck size and information active vali
 
 ## Alerting and Notifications
 
-Alertmanager triggers alerts and sends notifications when configured conditions are met, such as degraded block synchronization or low peers.
+Alertmanager triggers alerts and sends notifications via Telegram when configured conditions are met, such as degraded block synchronization or low peers.
+
+### Alerting Rules (Conditions)
+
+1. Alert if node is not in sync.
+2. The number of connected peers is low.
+3. Block production is stalled.
+4. No metrics received.
+
+Example of Telegram notification:
 
 <div style="text-align: center;">
     <img src="images/telegram-alerts.png" alt="image" width="500" />
 </div>
 
 ## Clean Up All Container Data
+
+> **Warning:** This will remove all container monitoring stack data.
 
 To stop and remove the monitoring stack and associated data, execute:
 
