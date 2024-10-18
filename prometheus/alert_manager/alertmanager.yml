@@ -16,5 +16,5 @@ receivers:
     telegram_configs:
       - send_resolved: true
         bot_token: 'YOUR_TELEGRAM_BOT_TOKEN'           # Put your telegram bot token here
-        chat_id: 'YOUR_TELEGRAM_USER_ID'               # Put your telegram user id here
+        chat_id: YOUR_TELEGRAM_USER_ID                 # Put your telegram user id here
         message: '{{ template "telegram.message" . }}' # Use your custom template here
