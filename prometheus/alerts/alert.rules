@@ -15,7 +15,7 @@ groups:
       labels:
         severity: minor
       annotations:
-        description: 'Node has been recently restarted.'
+        description: 'Node was restarted less than a minute ago.'
 
     - alert: CometTooFewPeers
       expr: cometbft_p2p_peers < 2
