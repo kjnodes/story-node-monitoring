@@ -203,7 +203,7 @@ Follow these steps to access and use the Story Node Dashboard in Grafana:
 
 The Grafana dashboard is organized into three main sections:
 
-### 1. kjnodes Story Services**
+### 1. kjnodes Story Services
 
 Contains links to kjnodes provided services for Story Protocol.
 
