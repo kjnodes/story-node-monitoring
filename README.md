@@ -227,7 +227,7 @@ Network metrics like node peer connections and traffic.
 
 #### 2.3. Blockchain
 
-Displays blockchain metrics like block time, blck size and information active validator set.
+Displays blockchain metrics, including block time, block size, and details about the active validator set.
 
 ![image](images/dashboard-cometbft-blockchain-metrics.png)
 
