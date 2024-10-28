@@ -40,18 +40,10 @@ groups:
       annotations:
         description: 'Block production stalled. The node has not produced any blocks in the last 5 minutes.'
 
-    - alert: CometNoMetricsReceived
-      expr: absent(cometbft_p2p_peers) == 1
-      for: 5m
+    - alert: InstanceDown
+      expr: up == 0
+      for: 1m
       labels:
         severity: critical
       annotations:
-        description: 'No metrics have been received in the last 5 minutes.'
-
-    - alert: GethNoMetricsReceived
-      expr: absent(p2p_peers) == 1
-      for: 5m
-      labels:
-        severity: critical
-      annotations:
-        description: 'No metrics have been received in the last 5 minutes.'
+        description: "Instance has been down for more than 1 minute."
