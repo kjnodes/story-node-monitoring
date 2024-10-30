@@ -1,7 +1,6 @@
 volumes:
   prometheus_data: {}
   grafana_data: {}
-  alerta_db: {}
 
 networks:
   story-monitoring:
@@ -40,42 +39,6 @@ services:
       - 9999:3000
     networks:
       - story-monitoring
-    restart: always
-
-  alerta_db:
-    image: postgres:11
-    container_name: alerta_db
-    networks:
-     - story-monitoring
-    volumes:
-      - type: volume
-        source: alerta_db
-        target: /var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: cosmos_monitoring
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-    hostname: 'alerta_db'
-    restart: always
-
-  alerta:
-    image: alerta/alerta-web:latest
-    container_name: alerta
-    networks:
-     - story-monitoring
-    ports:
-       - 8083:8083
-    depends_on:
-      - alerta_db
-    volumes:
-      - type: bind
-        source: ./alerta/alertad.conf
-        target: /app/alertad.conf
-        read_only: true
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@alerta_db:5432/monitoring
-      - PLUGINS=reject,blackout
-    hostname: 'alerta'
     restart: always
 
   alertmanager:
