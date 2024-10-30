@@ -1,3 +1,7 @@
+<p align="center">
+  <img height="75" height="auto" src="https://services.kjnodes.com/assets/images/logos/story.png">
+</p>
+
 # Story Node Monitoring stack
 
 This project provides a monitoring solution for Story Node services using Prometheus, Grafana, and Alertmanager. The stack enables real-time data visualization, monitoring, and alerting for your node's health and performance.
