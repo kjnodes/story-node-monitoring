@@ -1,65 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "Prometheus",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "11.2.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "text",
-      "name": "Text",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -79,15 +18,14 @@
   "description": "This dashboard provides a comprehensive view of key metrics from Story Protocol node. It offers insights into node performance, health and activity.",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 22099,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -105,7 +43,8 @@
         "content": "<div style=\"text-align: center;\">\n    <br>\n    <img src=\"https://services.kjnodes.com/assets/images/logos/story.png\"><br><br>\n    <h1>Story Consensus and Execution Node Metrics</h1>\n    <h5>⚡️ Powered by <a href=\"https://kjnodes.com\">kjnodes</a></h5>\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -123,9 +62,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -143,13 +82,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/\" target=\"_blank\">Story Services</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -167,13 +107,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/installation/\" target=\"_blank\">Node Installation</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -191,13 +132,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/upgrade/\" target=\"_blank\">Node Upgrade</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -215,13 +157,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/state-sync/\" target=\"_blank\">State-Sync</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -239,13 +182,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/snapshot/\" target=\"_blank\">Snapshot</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -263,13 +207,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/snapshot-archive/\" target=\"_blank\">Snapshot (Archive)</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -287,13 +232,14 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/useful-commands/\" target=\"_blank\">Useful Commands</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -311,7 +257,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h1><a href=\"https://services.kjnodes.com/testnet/story/public-rpc/\" target=\"_blank\">RPC Scanner</a></h1>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "type": "text"
     },
     {
@@ -328,9 +275,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -348,14 +295,15 @@
         "content": "# Cometbft Node Metrics\n\n*Metrics collected from a Story Cometbft Prometheus endpoint.*\n",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -373,9 +321,79 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>System</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 2,
+        "x": 0,
+        "y": 16
+      },
+      "id": 87,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Prometheus"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "lib_buildinfo_version{instance=\"$instance\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{version}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Story Version",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -408,7 +426,7 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 0,
+        "x": 2,
         "y": 16
       },
       "id": 21,
@@ -430,7 +448,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -484,7 +502,7 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 2,
+        "x": 4,
         "y": 16
       },
       "id": 1,
@@ -506,7 +524,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -555,7 +573,7 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 4,
+        "x": 6,
         "y": 16
       },
       "id": 5,
@@ -577,7 +595,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -668,7 +686,7 @@
       "gridPos": {
         "h": 8,
         "w": 4,
-        "x": 6,
+        "x": 8,
         "y": 16
       },
       "id": 24,
@@ -684,6 +702,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -737,7 +756,7 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 10,
+        "x": 12,
         "y": 16
       },
       "id": 47,
@@ -756,7 +775,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -839,8 +858,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 5,
-        "x": 12,
+        "w": 4,
+        "x": 14,
         "y": 16
       },
       "id": 46,
@@ -856,6 +875,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -904,7 +924,7 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 17,
+        "x": 18,
         "y": 16
       },
       "id": 25,
@@ -926,7 +946,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1010,8 +1030,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 5,
-        "x": 19,
+        "w": 4,
+        "x": 20,
         "y": 16
       },
       "id": 26,
@@ -1027,6 +1047,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1049,9 +1070,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -1069,7 +1090,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>Network</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1124,7 +1146,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1223,6 +1245,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1322,6 +1345,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1361,9 +1385,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -1381,7 +1405,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>Blockchain</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1435,7 +1460,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1507,7 +1532,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1607,6 +1632,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1677,7 +1703,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1776,6 +1802,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1846,7 +1873,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1917,7 +1944,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -1989,7 +2016,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2060,7 +2087,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2131,7 +2158,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2230,6 +2257,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2266,7 +2294,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2299,7 +2328,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2336,7 +2365,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2369,7 +2399,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2407,7 +2437,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2440,7 +2471,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2478,7 +2509,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2511,7 +2543,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2547,9 +2579,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -2567,14 +2599,15 @@
         "content": "# Geth Node Metrics\n\n*Metrics collected from a Story Geth Prometheus endpoint.*\n",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -2592,7 +2625,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>System</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -2623,7 +2657,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           }
@@ -2650,7 +2685,7 @@
         },
         "showHeader": false
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2738,7 +2773,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2765,6 +2801,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -2872,7 +2909,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -2899,6 +2937,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3006,7 +3045,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -3033,6 +3073,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3073,9 +3114,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -3093,7 +3134,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>Network</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -3113,7 +3155,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-orange"
+                "color": "semi-dark-orange",
+                "value": null
               },
               {
                 "color": "semi-dark-green",
@@ -3147,7 +3190,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3218,7 +3261,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -3245,6 +3289,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3317,7 +3362,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -3344,6 +3390,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3384,9 +3431,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -3404,7 +3451,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>Blockchain</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -3423,7 +3471,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -3456,7 +3505,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3535,7 +3584,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -3562,6 +3612,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3599,7 +3650,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-green"
+                "color": "semi-dark-green",
+                "value": null
               }
             ]
           },
@@ -3616,6 +3668,12 @@
       "id": 53,
       "options": {
         "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 16,
         "minVizWidth": 8,
@@ -3632,7 +3690,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3740,7 +3798,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -3767,6 +3826,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -3874,7 +3934,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -3907,6 +3968,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -4132,7 +4194,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -4165,6 +4228,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -4357,9 +4421,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -4377,7 +4441,8 @@
         "content": "<div style=\"text-align: center;\">\r\n    <br>\r\n    <h2>Database</h2>\r\n</div>",
         "mode": "markdown"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.3.0",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -4432,7 +4497,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -4459,6 +4525,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -4583,7 +4650,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#ffffff"
+                "color": "#ffffff",
+                "value": null
               }
             ]
           },
@@ -4610,6 +4678,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.0",
       "targets": [
         {
           "datasource": {
@@ -4649,8 +4718,9 @@
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "5s",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [
     "cometbft",
     "geth"
@@ -4664,10 +4734,7 @@
           "uid": "Prometheus"
         },
         "definition": "label_values(cometbft_p2p_peers,instance)",
-        "hide": 0,
         "includeAll": false,
-        "label": "",
-        "multi": false,
         "name": "instance",
         "options": [],
         "query": {
@@ -4677,8 +4744,6 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       },
       {
@@ -4688,9 +4753,7 @@
           "uid": "Prometheus"
         },
         "definition": "label_values(cometbft_p2p_peers,chain_id)",
-        "hide": 0,
         "includeAll": false,
-        "multi": false,
         "name": "chain_id",
         "options": [],
         "query": {
@@ -4700,8 +4763,6 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       }
     ]
@@ -4714,6 +4775,6 @@
   "timezone": "browser",
   "title": "Stroy Node Dashboard",
   "uid": "frewgrege",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
