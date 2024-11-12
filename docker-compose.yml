@@ -9,14 +9,16 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     volumes:
-       - type: volume
-         source: prometheus_data
-         target: /prometheus
-       - type: bind
-         source: ./prometheus
-         target: /etc/prometheus
-         read_only: true 
+      - type: volume
+        source: prometheus_data
+        target: /prometheus
+      - type: bind
+        source: ./prometheus
+        target: /etc/prometheus
+        read_only: true 
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'

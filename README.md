@@ -45,7 +45,7 @@ After=network-online.target
 [Service]
 User=root
 WorkingDirectory=~
-ExecStart=/usr/local/bin/geth --iliad --syncmode full --http --ws --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
+ExecStart=/usr/local/bin/geth --odyssey --syncmode full --http --ws --metrics --metrics.addr 0.0.0.0 --metrics.port 6060
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
@@ -174,14 +174,14 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-          - 192.168.0.1:26660
+          - host.docker.internal:26660
         labels:
           instance: story
   - job_name: geth
     metrics_path: /debug/metrics/prometheus
     static_configs:
       - targets:
-          - 192.168.0.1:6060
+          - host.docker.internal:6060
         labels:
           instance: story
 ```

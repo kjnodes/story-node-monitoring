@@ -23,13 +23,13 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-          - YOUR_NODE_IP:COMET_PORT  # for example 192.168.0.1:26660
+          - YOUR_NODE_IP:COMET_PORT  # for example host.docker.internal:26660 for docker host
         labels:
           instance: story
   - job_name: geth
     metrics_path: /debug/metrics/prometheus
     static_configs:
       - targets:
-          - YOUR_NODE_IP:GETH_PORT  # for example 192.168.0.1:6060
+          - YOUR_NODE_IP:GETH_PORT  # for example host.docker.internal:6060 for docker host
         labels:
           instance: story
